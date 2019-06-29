@@ -41,56 +41,17 @@ const InputDiv = styled.div`
   }
 `;
 
-class Form extends React.Componenet {
-  constructor(props) {}
-  Autotab(current, to) {
-    if (
-      current.getAttribute &&
-      current.value.length == current.getAttribute("maxlength")
-    ) {
-      to.focus();
-    }
-  }
+class Form extends React.Component {
   render() {
     return (
-      <FormDiv onSubmit={props.getWeather}>
+      <FormDiv onSubmit={this.props.getWeather}>
         <h1>forecast</h1>
         <InputDiv>
-          <input
-            onInput="Autotab(this, document.formName.inputName)"
-            type="text"
-            maxLength="1"
-            placeholder="5"
-            name="zip1"
-          ></input>
-          <input
-            onInput="Autotab(this, document.formName.inputName)"
-            type="text"
-            maxLength="1"
-            placeholder="5"
-            name="zip2"
-          ></input>
-          <input
-            onInput="Autotab(this, document.formName.inputName)"
-            type="text"
-            maxLength="1"
-            placeholder="5"
-            name="zip3"
-          ></input>
-          <input
-            onInput="Autotab(this, document.formName.inputName)"
-            type="text"
-            maxLength="1"
-            placeholder="5"
-            name="zip4"
-          ></input>
-          <input
-            onInput={(this.Autotab, document.formName.inputName)}
-            type="text"
-            maxLength="1"
-            placeholder="5"
-            name="zip5"
-          ></input>
+          <input type="text" maxLength="1" placeholder="5" name="zip1"></input>
+          <input type="text" maxLength="1" placeholder="5" name="zip2"></input>
+          <input type="text" maxLength="1" placeholder="5" name="zip3"></input>
+          <input type="text" maxLength="1" placeholder="5" name="zip4"></input>
+          <input type="text" maxLength="1" placeholder="5" name="zip5"></input>
         </InputDiv>
         <button>submit</button>
         <p>Input your Zipcode to begin</p>
