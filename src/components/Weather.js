@@ -66,9 +66,9 @@ const Future = styled.div`
   position: relative;
   justify-items: center;
   height: 100%;
-  width: 727px;
+  width: 787px;
   margin: 0;
-  transform: translate(-28px, 0px);
+  transform: translate(-50px, 0px);
 
   p {
     margin: 0;
@@ -81,11 +81,11 @@ const FutureDiv = styled.div`
   left: 0;
   border-radius: 8px;
   box-shadow: 0px 4px 9px rgba(129, 129, 129, 0.2);
-  margin-right: 14px;
+  margin-right: 30px;
   background-color: white;
   width: 100px;
   height: 150px;
-  padding: 13px;
+  padding: 18px;
   grid-area: day;
 
   &:nth-child(2) {
@@ -95,6 +95,7 @@ const FutureDiv = styled.div`
     left: 0;
     width: 100px;
   }
+
   &:nth-child(3) {
     grid-area: day3;
     position: absolute;
@@ -116,6 +117,14 @@ const FutureDiv = styled.div`
     left: 0;
     width: 100px;
   }
+`;
+
+const FutureTemp = styled.div`
+  position: absolute;
+  bottom: 20px;
+  font-weight: 800;
+  width: 80%;
+  text-align: center;
 `;
 
 class Weather extends React.Component {
@@ -150,60 +159,60 @@ class Weather extends React.Component {
               <FutureDiv>
                 {/* today */}
                 <p>Today</p>
-                <p>
-                  {JSON.stringify(this.props.temperatureNow).slice(0, 2)}&#176;
-                </p>
                 <p>{this.props.conditionsToday}</p>
+                <FutureTemp>
+                  {JSON.stringify(this.props.temperatureNow).slice(0, 2)}&#176;
+                </FutureTemp>
               </FutureDiv>
               <FutureDiv>
                 {/* tomorrow */}
                 <p>
-                  <Moment add={{ days: 1 }} format="dddd">
+                  <Moment add={{ days: 1 }} format="ddd">
                     {date}
                   </Moment>
                 </p>
-                <p>
+                <p>{this.props.conditionsTomorrow}</p>
+                <FutureTemp>
                   {JSON.stringify(this.props.temperatureTomorrow).slice(0, 2)}
                   &#176;
-                </p>
-                <p>{this.props.conditionsTomorrow}</p>
+                </FutureTemp>
               </FutureDiv>
               <FutureDiv>
                 {/* day 3 */}
                 <p>
                   {" "}
-                  <Moment add={{ days: 2 }} format="dddd">
+                  <Moment add={{ days: 2 }} format="ddd">
                     {date}
                   </Moment>
                 </p>
-                <p>
-                  {JSON.stringify(this.props.temperatureDay3).slice(0, 2)}&#176;
-                </p>
                 <p>{this.props.conditionsDay3}</p>
+                <FutureTemp>
+                  {JSON.stringify(this.props.temperatureDay3).slice(0, 2)}&#176;
+                </FutureTemp>
               </FutureDiv>
               <FutureDiv>
                 {/* day 4 */}
                 <p>
-                  <Moment add={{ days: 3 }} format="dddd">
+                  <Moment add={{ days: 3 }} format="ddd">
                     {date}
                   </Moment>
                 </p>
-                <p>
-                  {JSON.stringify(this.props.temperatureDay4).slice(0, 2)}&#176;
-                </p>
                 <p>{this.props.conditionsDay4}</p>
+                <FutureTemp>
+                  {JSON.stringify(this.props.temperatureDay4).slice(0, 2)}&#176;
+                </FutureTemp>
               </FutureDiv>
               <FutureDiv>
                 {/* day 5 */}
                 <p>
-                  <Moment add={{ days: 4 }} format="dddd">
+                  <Moment add={{ days: 4 }} format="ddd">
                     {date}
                   </Moment>
                 </p>
-                <p>
-                  {JSON.stringify(this.props.temperatureDay5).slice(0, 2)}&#176;
-                </p>
                 <p>{this.props.conditionsDay5}</p>
+                <FutureTemp>
+                  {JSON.stringify(this.props.temperatureDay5).slice(0, 2)}&#176;
+                </FutureTemp>
               </FutureDiv>
             </Future>
           </WeatherContainer>

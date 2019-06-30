@@ -5,6 +5,8 @@ import styled from "styled-components";
 
 const AppWrapper = styled.div`
   width: 100vw;
+  height: 70vh;
+  background-position: center bottom;
   padding: 15% 0 20% 0;
   background-image: url("https://images.unsplash.com/photo-1547558848-82d9f5e9641a?ixlib=rb-1.2.1&auto=format&fit=crop&w=3792&q=80");
   background-size: cover;
@@ -17,7 +19,6 @@ const MainContent = styled.div`
   background-color: rgba(250, 250, 250, 0.88);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-
   margin: 0 auto;
   display: block;
 `;
