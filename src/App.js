@@ -111,7 +111,7 @@ class App extends React.Component {
     return (
       <AppWrapper>
         <MainContent>
-          <Form getWeather={this.getWeather} />
+          <Form zip1={this.state.zip1} getWeather={this.getWeather} />
           <Weather
             zip1={this.state.zip1}
             zip2={this.zip2}

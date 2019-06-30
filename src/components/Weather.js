@@ -1,9 +1,122 @@
 import React from "react";
 import styled from "styled-components";
 import Moment from "react-moment";
-const Today = styled.div``;
-const Future = styled.div``;
-const FutureDiv = styled.div``;
+const WeatherContainer = styled.div`
+  height: 100%;
+`;
+const Today = styled.div`
+  width: 100%;
+  text-align: left;
+  font-size: 10px;
+  padding: 46px;
+`;
+
+const InlineDate = styled.div`
+  * {
+    display: inline;
+  }
+
+  p {
+    font-size: 14px;
+    color: #848484;
+  }
+
+  h2 {
+    display: block;
+    font-size: 20px;
+  }
+`;
+
+const TodayDescribe = styled.div`
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding: 10px 30px;
+  align-items: flex-start;
+  h1 {
+    font-size: 130px;
+    flex: 130px;
+    margin: 0;
+    padding-left: 60px;
+  }
+  div {
+    flex: 300px;
+    padding: 60px 0 0 0;
+    margin: 0;
+    h2 {
+      text-align: center;
+      font-weight: 400;
+      font-size: 17px;
+    }
+    p {
+      text-align: center;
+      width: 180px;
+      margin: 0 auto;
+      color: #848484;
+      font-size: 12px;
+    }
+  }
+`;
+
+const Future = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "day day2 day3 day4 day5";
+  position: relative;
+  justify-items: center;
+  height: 100%;
+  width: 727px;
+  margin: 0;
+  transform: translate(-28px, 0px);
+
+  p {
+    margin: 0;
+    text-align: center;
+  }
+`;
+const FutureDiv = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 9px rgba(129, 129, 129, 0.2);
+  margin-right: 14px;
+  background-color: white;
+  width: 100px;
+  height: 150px;
+  padding: 13px;
+  grid-area: day;
+
+  &:nth-child(2) {
+    grid-area: day2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+  }
+  &:nth-child(3) {
+    grid-area: day3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+  }
+  &:nth-child(4) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    grid-area: day4;
+  }
+  &:nth-child(5) {
+    grid-area: day5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+  }
+`;
 
 class Weather extends React.Component {
   render() {
@@ -11,58 +124,89 @@ class Weather extends React.Component {
     return (
       <div>
         {this.props.zip1 && (
-          <div>
+          <WeatherContainer>
             <Today>
-              <Moment format="dddd">{date}</Moment>
-              <p>Date: {this.props.date}</p>
-              <p>Location: {this.props.city}</p>
-              <p>Temperature: {this.props.temperatureNow}</p>
-              <p>Description: {this.props.conditionsToday}</p>
-              <p>High: {this.props.temperatureNowHigh}</p>
-              <p>Wind Speed: {this.props.windSpeed}</p>
+              <InlineDate>
+                <p>
+                  <Moment format="MMMM do[, ] YYYY">{date}</Moment>
+                </p>
+                <h2> {this.props.city}</h2>
+              </InlineDate>
+              <TodayDescribe>
+                <h1>
+                  {/* {this.props.temperatureNow} */}
+                  {JSON.stringify(this.props.temperatureNow).slice(0, 2)}&#176;
+                </h1>
+                <div>
+                  <h2>{this.props.conditionsToday}</h2>
+                  <p>
+                    The high today will be {this.props.temperatureNowHigh}° with
+                    winds at {this.props.windSpeed} mph
+                  </p>
+                </div>
+              </TodayDescribe>
             </Today>
             <Future>
               <FutureDiv>
+                {/* today */}
                 <p>Today</p>
-                <Moment format="dddd">{date}</Moment>
-                <p>Temperature: {this.props.temperatureNow}</p>
-                <p>Description: {this.props.conditionsToday}</p>
+                <p>
+                  {JSON.stringify(this.props.temperatureNow).slice(0, 2)}&#176;
+                </p>
+                <p>{this.props.conditionsToday}</p>
               </FutureDiv>
               <FutureDiv>
-                <p>Tomorrow</p>
-                <Moment add={{ days: 1 }} format="dddd">
-                  {date}
-                </Moment>
-
-                <p>Temperature: {this.props.temperatureTomorrow}</p>
-                <p>Description: {this.props.conditionsTomorrow}</p>
+                {/* tomorrow */}
+                <p>
+                  <Moment add={{ days: 1 }} format="dddd">
+                    {date}
+                  </Moment>
+                </p>
+                <p>
+                  {JSON.stringify(this.props.temperatureTomorrow).slice(0, 2)}
+                  &#176;
+                </p>
+                <p>{this.props.conditionsTomorrow}</p>
               </FutureDiv>
               <FutureDiv>
-                <p>Day 3</p>
-                <Moment add={{ days: 2 }} format="dddd">
-                  {date}
-                </Moment>
-                <p>Temperature: {this.props.temperatureDay3}</p>
-                <p>Description: {this.props.conditionsDay3}</p>
+                {/* day 3 */}
+                <p>
+                  {" "}
+                  <Moment add={{ days: 2 }} format="dddd">
+                    {date}
+                  </Moment>
+                </p>
+                <p>
+                  {JSON.stringify(this.props.temperatureDay3).slice(0, 2)}&#176;
+                </p>
+                <p>{this.props.conditionsDay3}</p>
               </FutureDiv>
               <FutureDiv>
-                <p>Day 4</p>
-                <Moment add={{ days: 3 }} format="dddd">
-                  {date}
-                </Moment>
-                <p>Temperature: {this.props.temperatureDay4}</p>
-                <p>Description: {this.props.conditionsDay4}</p>
+                {/* day 4 */}
+                <p>
+                  <Moment add={{ days: 3 }} format="dddd">
+                    {date}
+                  </Moment>
+                </p>
+                <p>
+                  {JSON.stringify(this.props.temperatureDay4).slice(0, 2)}&#176;
+                </p>
+                <p>{this.props.conditionsDay4}</p>
               </FutureDiv>
               <FutureDiv>
-                <p>Day 5</p>
-                <Moment add={{ days: 4 }} format="dddd">
-                  {date}
-                </Moment>
-                <p>Temperature: {this.props.temperatureDay5}</p>
-                <p>Description: {this.props.conditionsDay5}</p>
+                {/* day 5 */}
+                <p>
+                  <Moment add={{ days: 4 }} format="dddd">
+                    {date}
+                  </Moment>
+                </p>
+                <p>
+                  {JSON.stringify(this.props.temperatureDay5).slice(0, 2)}&#176;
+                </p>
+                <p>{this.props.conditionsDay5}</p>
               </FutureDiv>
             </Future>
-          </div>
+          </WeatherContainer>
         )}
         {this.props.error && <p>Error: {this.props.error}</p>}
       </div>

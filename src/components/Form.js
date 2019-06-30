@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { hidden } from "ansi-colors";
 
 const FormDiv = styled.form`
   width: 100%;
@@ -17,6 +18,7 @@ const FormDiv = styled.form`
     letter-spacing: 0.1em;
     font-size: 14px;
     text-align: center;
+    padding-top: 40px;
   }
 `;
 
@@ -44,18 +46,47 @@ const InputDiv = styled.div`
 class Form extends React.Component {
   render() {
     return (
-      <FormDiv onSubmit={this.props.getWeather}>
-        <h1>forecast</h1>
-        <InputDiv>
-          <input type="text" maxLength="1" placeholder="5" name="zip1"></input>
-          <input type="text" maxLength="1" placeholder="5" name="zip2"></input>
-          <input type="text" maxLength="1" placeholder="5" name="zip3"></input>
-          <input type="text" maxLength="1" placeholder="5" name="zip4"></input>
-          <input type="text" maxLength="1" placeholder="5" name="zip5"></input>
-        </InputDiv>
-        <button>submit</button>
-        <p>Input your Zipcode to begin</p>
-      </FormDiv>
+      <div>
+        {!this.props.zip1 && (
+          <FormDiv onSubmit={this.props.getWeather}>
+            <h1>forecast</h1>
+            <InputDiv>
+              <input
+                type="text"
+                maxLength="1"
+                placeholder="5"
+                name="zip1"
+              ></input>
+              <input
+                type="text"
+                maxLength="1"
+                placeholder="5"
+                name="zip2"
+              ></input>
+              <input
+                type="text"
+                maxLength="1"
+                placeholder="5"
+                name="zip3"
+              ></input>
+              <input
+                type="text"
+                maxLength="1"
+                placeholder="5"
+                name="zip4"
+              ></input>
+              <input
+                type="text"
+                maxLength="1"
+                placeholder="5"
+                name="zip5"
+              ></input>
+            </InputDiv>
+            <button style={{ display: "none" }}></button>
+            <p>Input your zipcode to begin</p>
+          </FormDiv>
+        )}
+      </div>
     );
   }
 }
