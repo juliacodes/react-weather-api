@@ -71,7 +71,7 @@ class App extends React.Component {
     //const country = e.target.elements.country.value;
 
     const api_call = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${API_KEY}&units=imperial`
+      `https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${API_KEY}&units=imperial`
     );
     const list = await api_call.json();
 
