@@ -2,7 +2,7 @@ import React from "react";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
 import styled from "styled-components";
-
+import Credit from "./components/Credit";
 const AppWrapper = styled.div`
   width: 100vw;
   height: 70vh;
@@ -121,6 +121,7 @@ class App extends React.Component {
   render() {
     return (
       <AppWrapper>
+        <Credit />
         <MainContent>
           <Form zip1={this.state.zip1} getWeather={this.getWeather} />
           <Weather
