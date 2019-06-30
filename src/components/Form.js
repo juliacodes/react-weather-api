@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { hidden } from "ansi-colors";
 
 const FormDiv = styled.form`
   width: 100%;
