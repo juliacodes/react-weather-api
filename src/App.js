@@ -39,19 +39,24 @@ class App extends React.Component {
     temperatureNow: undefined,
     temperatureNowHigh: undefined,
     conditionsToday: undefined,
+    conditionsID: undefined,
     windSpeed: undefined,
     // tomorrow
     temperatureTomorrow: undefined,
     conditionsTomorrow: undefined,
+    conditionsIDTomorrow: undefined,
     // day 3
     temperatureDay3: undefined,
     conditionsDay3: undefined,
+    conditionsID3: undefined,
     // day 4
     temperatureDay4: undefined,
     conditionsDay4: undefined,
+    conditionsID4: undefined,
     // day 5
     temperatureDay5: undefined,
     conditionsDay5: undefined,
+    conditionsID5: undefined,
     // error
     error: undefined
   };
@@ -82,23 +87,28 @@ class App extends React.Component {
         temperatureNow: list.list[0].main.temp,
         temperatureNowHigh: list.list[0].main.temp_max,
         conditionsToday: list.list[0].weather[0].description,
+        conditionsID: list.list[0].weather[0].main,
         windSpeed: list.list[0].wind.speed,
 
         //  tomorrow
         temperatureTomorrow: list.list[7].main.temp,
         conditionsTomorrow: list.list[7].weather[0].description,
+        conditionsIDTomorrow: list.list[7].weather[0].main,
 
         // day 3
         temperatureDay3: list.list[15].main.temp,
         conditionsDay3: list.list[15].weather[0].description,
+        conditionsID3: list.list[15].weather[0].main,
 
         // day 4
         temperatureDay4: list.list[23].main.temp,
         conditionsDay4: list.list[23].weather[0].description,
+        conditionsID4: list.list[23].weather[0].main,
 
         // day 5
         temperatureDay5: list.list[23].main.temp,
         conditionsDay5: list.list[23].weather[0].description,
+        conditionsID5: list.list[23].weather[0].main,
 
         error: ""
       });
@@ -127,19 +137,24 @@ class App extends React.Component {
             temperatureNow={this.state.temperatureNow}
             temperatureNowHigh={this.state.temperatureNowHigh}
             conditionsToday={this.state.conditionsToday}
+            conditionsID={this.state.conditionsID}
             windSpeed={this.state.windSpeed}
             // tomorrow
             temperatureTomorrow={this.state.temperatureTomorrow}
             conditionsTomorrow={this.state.conditionsTomorrow}
+            conditionsIDTomorrow={this.state.conditionsIDTomorrow}
             // day 3
             temperatureDay3={this.state.temperatureDay3}
             conditionsDay3={this.state.conditionsDay3}
+            conditionsID3={this.state.conditionsID3}
             // day 4
             temperatureDay4={this.state.temperatureDay4}
             conditionsDay4={this.state.conditionsDay4}
+            conditionsID4={this.state.conditionsID4}
             // day 5
             temperatureDay5={this.state.temperatureDay5}
             conditionsDay5={this.state.conditionsDay5}
+            conditionsID5={this.state.conditionsID5}
             // error
             error={this.state.error}
           />
