@@ -2,16 +2,16 @@ import React from "react";
 import Form from "./components/Form";
 import Weather from "./components/Weather";
 import styled from "styled-components";
-import Credit from "./components/Credit";
+
 const AppWrapper = styled.div`
   width: 100vw;
-  height: 70vh;
+  height: 100vh;
   background-position: center bottom;
-  padding: 15% 0 20% 0;
-  background-image: url("https://images.unsplash.com/photo-1547558848-82d9f5e9641a?ixlib=rb-1.2.1&auto=format&fit=crop&w=3792&q=80");
+  padding: 0;
+  background-image: url("https://images.unsplash.com/photo-1428908728789-d2de25dbd4e2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80");
   background-size: cover;
   background-repeat: no-repeat;
-  display: block;
+  display: flex;
 `;
 const MainContent = styled.div`
   width: 650px;
@@ -19,8 +19,9 @@ const MainContent = styled.div`
   background-color: rgba(250, 250, 250, 0.88);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
-  margin: 0 auto;
+  margin: auto;
   display: block;
+  transform: translateY(-50px);
 `;
 
 const API_KEY = "b8d5d166fa637e392446c7de40113758";
@@ -121,7 +122,6 @@ class App extends React.Component {
   render() {
     return (
       <AppWrapper>
-        <Credit />
         <MainContent>
           <Form zip1={this.state.zip1} getWeather={this.getWeather} />
           <Weather
