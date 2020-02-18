@@ -7,6 +7,17 @@ import snow from "./images/snow.png";
 import fog from "./images/fog.png";
 import storms from "./images/storms.png";
 import sunny from "./images/sunny.png";
+import refresh from "./images/refresh.png";
+
+const Refresh = styled.div`
+  background-image: url(${refresh});
+  height :50px;
+  width:50px;
+  align-items:center;
+  margin-left:500px;
+  margin-top:0px;
+  background-repeat:no-repeat;
+  `;
 
 const WeatherContainer = styled.div`
   height: 100%;
@@ -19,19 +30,17 @@ const Today = styled.div`
 `;
 
 const InlineDate = styled.div`
-  * {
-    display: inline;
-  }
-
-  p {
-    font-size: 14px;
-    color: #848484;
-  }
-
-  h2 {
-    display: block;
-    font-size: 20px;
-  }
+* {
+  display: inline;
+}
+p {
+  font-size: 14px;
+  color: #848484;
+}
+h2 {
+  display: block;
+  font-size: 20px;
+}
 `;
 
 const TodayDescribe = styled.div`
@@ -44,7 +53,7 @@ const TodayDescribe = styled.div`
     font-size: 130px;
     flex: 130px;
     margin: 0;
-    padding-left: 60px;
+    padding-left: 50px;
   }
   div {
     flex: 300px;
@@ -152,6 +161,7 @@ const RainImage = styled.div`
   margin-top: 20px;
 `;
 
+
 const StormImage = styled.div`
   background-image: url(${storms});
   height: 60px;
@@ -184,9 +194,14 @@ const SunnyImage = styled.div`
   height: 60px;
   width: 60px;
   background-size: 100%;
-  margin-left: 20px;
+  margin-right: 20px;
   margin-top: 20px;
 `;
+
+function RefreshFunction(){
+  window.location.reload(false)
+}
+
 
 class Weather extends React.Component {
   render() {
@@ -195,19 +210,30 @@ class Weather extends React.Component {
       <div>
         {this.props.zip1 && (
           <WeatherContainer>
-            <Today>
+            
+           <Today>
+             
+              
               <InlineDate>
+              
                 <p>
                   <Moment format="MMMM do[, ] YYYY">{date}</Moment>
+                  
                 </p>
+                
                 <h2> {this.props.city}</h2>
+                 
               </InlineDate>
+              
+              <Refresh onClick = {RefreshFunction}></Refresh> 
               <TodayDescribe>
-                <h1>
+                 
+                <h1>  
                   {/* {this.props.temperatureNow} */}
                   {JSON.stringify(this.props.temperatureNow).slice(0, 2)}&#176;
                 </h1>
                 <div>
+                  
                   <h2>{this.props.conditionsToday}</h2>
                   <p>
                     The high today will be {this.props.temperatureNowHigh}° with
